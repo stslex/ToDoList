@@ -9,6 +9,9 @@ interface TodoDao {
     @Query("SELECT * FROM todo_table")
     fun getAll(): Flow<List<Todo>>
 
+    @Query("SELECT * FROM todo_table WHERE id = :id")
+    fun getTodoItem(id: Int): Flow<Todo>
+
     @Insert
     suspend fun insert(todo: Todo)
 
@@ -23,5 +26,8 @@ interface TodoDao {
 
     @Update(entity = Todo::class)
     suspend fun update(todo: Todo)
+
+    @Update(entity = Todo::class)
+    suspend fun updateAll(todo: List<Todo>)
 
 }

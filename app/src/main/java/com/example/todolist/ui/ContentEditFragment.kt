@@ -5,11 +5,17 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.todolist.R
+import com.example.todolist.TodoApplication
+import com.example.todolist.TodoViewModel
+import com.example.todolist.TodoViewModelFactory
+import com.example.todolist.bd.Todo
 import com.example.todolist.databinding.FragmentContentEditBinding
 import com.example.todolist.util.APP_ACTIVITY
 import com.example.todolist.util.hideKeyboard
@@ -19,8 +25,15 @@ import java.util.*
 
 class ContentEditFragment : Fragment() {
 
+    private val todoViewModel: TodoViewModel by viewModels {
+        TodoViewModelFactory((APP_ACTIVITY.application as TodoApplication).repository)
+    }
+
     private lateinit var binding: FragmentContentEditBinding
     private lateinit var calendar: Calendar
+    private val bundle = Bundle()
+    private var newTodo = true
+    private var id: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +48,6 @@ class ContentEditFragment : Fragment() {
         hideKeyboard()
         APP_ACTIVITY.actionBar?.setDisplayShowHomeEnabled(true)
         APP_ACTIVITY.actionBar?.setHomeButtonEnabled(true)
-
         initFields()
         initListeners()
 
@@ -90,14 +102,33 @@ class ContentEditFragment : Fragment() {
 
     @SuppressLint("SimpleDateFormat")
     private fun initFields() {
-        binding.editContentTvDate.text =
-            SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
-        binding.editContentTvTime.text =
-            SimpleDateFormat("kk.mm").format(System.currentTimeMillis())
+        newTodo = arguments?.getBoolean("NewTodo") ?: true
+        Log.i("newTodo::", newTodo.toString())
+        if (newTodo) {
+            binding.editContentTvDate.text =
+                SimpleDateFormat("dd.MM.yyyy").format(System.currentTimeMillis())
+            binding.editContentTvTime.text =
+                SimpleDateFormat("kk.mm").format(System.currentTimeMillis())
+        } else {
+            id = arguments?.getInt("TodoId")
+            if (id != null) {
+                val todo = todoViewModel.getToDoItem(id!!)
+                Log.i("id::", id.toString())
+                todo.observe(APP_ACTIVITY, {
+                    binding.contentTitleText.setText(it.title)
+                    binding.contentContentText.setText(it.content)
+                    binding.editContentTvStatus.text = it.status
+                    binding.editContentTvPriority.text = it.priority
+                    binding.editContentTvDate.text = it.date
+                    binding.editContentTvTime.text = it.time
+                })
+            }
+        }
+
         calendar = Calendar.getInstance()
     }
 
-    private fun showDialogPriority(){
+    private fun showDialogPriority() {
         val dialog = Dialog(APP_ACTIVITY)
         dialog.setContentView(R.layout.dialog_priority)
         dialog.window?.setBackgroundDrawableResource(R.drawable.dr_item_recycler)
@@ -109,7 +140,7 @@ class ContentEditFragment : Fragment() {
         }
     }
 
-    private fun showDialogStatus(){
+    private fun showDialogStatus() {
         val dialog = Dialog(APP_ACTIVITY)
         dialog.setContentView(R.layout.dialog_status)
         dialog.window?.setBackgroundDrawableResource(R.drawable.dr_item_recycler)
@@ -119,6 +150,48 @@ class ContentEditFragment : Fragment() {
         buttonSave.setOnClickListener {
             dialog.hide()
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        var title = binding.contentTitleText.text.toString()
+        var content = binding.contentContentText.text.toString()
+        val date = binding.editContentTvDate.text.toString()
+        val time = binding.editContentTvTime.text.toString()
+        val status = binding.editContentTvStatus.text.toString()
+        val priority = binding.editContentTvPriority.text.toString()
+
+        if (title == "") title = "title"
+        if (content == "") content = "Content"
+
+        if (newTodo) {
+            val todo = Todo(
+                title = title,
+                content = content,
+                status = status,
+                priority = priority,
+                date = date,
+                time = time
+            )
+            todoViewModel.insert(todo)
+        } else {
+            val todo = id?.let {
+                Todo(
+                    id = it,
+                    title = title,
+                    content = content,
+                    status = status,
+                    priority = priority,
+                    date = date,
+                    time = time
+                )
+            }
+            if (todo != null) {
+                todoViewModel.update(todo)
+                Log.i("UPDATE::", todo.toString())
+            }
+        }
+
     }
 
 }

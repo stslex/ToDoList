@@ -4,7 +4,7 @@ import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 
-fun showToast(string: String){
+fun showToast(string: String) {
     Toast.makeText(APP_ACTIVITY, string, Toast.LENGTH_SHORT).show()
 }
 

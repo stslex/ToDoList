@@ -7,15 +7,22 @@ import com.example.todolist.bd.TodoRepository
 import kotlinx.coroutines.launch
 
 class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
-    val allNotes: LiveData<List<Todo>> = repository.allList.asLiveData()
+    val allTodo: LiveData<List<Todo>> = repository.allList.asLiveData()
+
+    fun getToDoItem(id: Int) = repository.getToDoItem(id).asLiveData()
 
     fun insert(todo: Todo) = viewModelScope.launch {
         repository.insert(todo)
     }
 
     fun update(todo: Todo) = viewModelScope.launch {
-        Log.i("Update:", " ${todo.uid}")
+        Log.i("Update:", " ${todo.id}")
         repository.update(todo)
+    }
+
+    fun updateAll(todo: List<Todo>) = viewModelScope.launch {
+        Log.i("UpdateAll:", " ${todo[0].id}")
+        repository.updateAll(todo)
     }
 
     fun deleteAll() = viewModelScope.launch {
@@ -31,7 +38,7 @@ class TodoViewModel(private val repository: TodoRepository) : ViewModel() {
     }
 }
 
-class NoteViewModelFactory(private val repository: TodoRepository) :
+class TodoViewModelFactory(private val repository: TodoRepository) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(TodoViewModel::class.java)) {

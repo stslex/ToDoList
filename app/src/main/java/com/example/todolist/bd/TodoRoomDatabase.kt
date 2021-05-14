@@ -8,7 +8,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@Database(entities = [Todo::class], version = 1, exportSchema = false)
+@Database(entities = [Todo::class], version = 3, exportSchema = false)
 abstract class TodoRoomDatabase : RoomDatabase() {
 
     abstract fun todoDao(): TodoDao
