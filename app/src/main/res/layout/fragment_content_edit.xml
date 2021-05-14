@@ -14,14 +14,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="@string/title">
+        android:hint="@string/title"
+        app:boxBackgroundMode="none">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:hint="@string/title"/>
+            style="@style/TextPrimary"
+            android:background="@drawable/dr_item_recycler"
+            android:paddingStart="@dimen/app_margin_big"
+            android:paddingEnd="@dimen/app_margin_big"
+            android:paddingBottom="@dimen/app_margin"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -32,16 +36,116 @@
         app:layout_constraintTop_toBottomOf="@+id/content_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:hint="@string/title"
-        android:layout_marginTop="@dimen/app_margin">
+        app:layout_constraintBottom_toTopOf="@+id/edit_content_container_attribute"
+        android:hint="@string/editText"
+        android:layout_marginTop="@dimen/app_margin"
+        android:layout_marginBottom="@dimen/app_margin"
+        app:boxBackgroundMode="none">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="start|top"
-            android:inputType="textMultiLine"/>
+            android:inputType="textMultiLine"
+            style="@style/TextPrimary"
+            android:background="@drawable/dr_item_recycler"
+            android:paddingStart="@dimen/app_margin_big"
+            android:paddingEnd="@dimen/app_margin_big"
+            android:paddingBottom="@dimen/app_margin"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/edit_content_container_attribute"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/dr_item_recycler"
+        android:padding="@dimen/app_margin"
+        android:layout_marginBottom="@dimen/app_margin"
+        android:paddingStart="@dimen/app_margin_big"
+        android:paddingEnd="@dimen/app_margin_big">
+
+        <TextView
+            android:id="@+id/edit_content_tv_label_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Status:"
+            style="@style/TextPrimary"/>
+
+        <TextView
+            android:id="@+id/edit_content_tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="creating"
+            style="@style/TextPrimary"/>
+
+        <View
+            android:id="@+id/edit_content_line1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_tv_label_status"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/app_margin"
+            android:background="@color/darkGray"/>
+
+        <TextView
+            android:id="@+id/edit_content_tv_label_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_line1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Date:"
+            style="@style/TextPrimary"
+            android:layout_marginTop="@dimen/app_margin"/>
+
+        <TextView
+            android:id="@+id/edit_content_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="__.__.____"
+            style="@style/TextPrimary"
+            android:layout_marginTop="@dimen/app_margin"/>
+
+        <View
+            android:id="@+id/edit_content_line2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_tv_label_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/app_margin"
+            android:background="@color/darkGray"/>
+
+        <TextView
+            android:id="@+id/edit_content_tv_label_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_line2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="Time:"
+            style="@style/TextPrimary"
+            android:layout_marginTop="@dimen/app_margin"/>
+
+        <TextView
+            android:id="@+id/edit_content_tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/edit_content_line2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:text="__:__"
+            style="@style/TextPrimary"
+            android:layout_marginTop="@dimen/app_margin"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

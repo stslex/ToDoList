@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="app_margin_big">30dp</dimen>
     <dimen name="app_margin">20dp</dimen>
+    <dimen name="app_margin_small">10dp</dimen>
+    <dimen name="primary_text_size">16sp</dimen>
 </resources>

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:layout_marginTop="@dimen/app_margin">
 
 
     <LinearLayout
@@ -15,7 +16,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/main_screen_item_status"
         android:orientation="vertical"
-        android:layout_marginEnd="20dp">
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/dr_item_recycler"
+        android:padding="20dp">
 
         <TextView
             android:id="@+id/main_screen_item_title"
@@ -29,7 +32,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="content"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:layout_marginTop="@dimen/app_margin"/>
 
     </LinearLayout>
 
@@ -37,10 +41,20 @@
         android:id="@+id/main_screen_item_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/main_screen_item_date"
         app:layout_constraintTop_toTopOf="@id/main_screen_item_layout"
+        style="@style/TextPrimary.InProgress"
+        android:layout_marginTop="@dimen/app_margin"/>
+
+    <TextView
+        android:id="@+id/main_screen_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/main_screen_item_layout"
-        android:text="inProcess"/>
+        android:text="12.23.2021 | 12:00"
+        android:layout_marginBottom="@dimen/app_margin"
+        android:layout_marginEnd="@dimen/app_margin"/>
 
 
 

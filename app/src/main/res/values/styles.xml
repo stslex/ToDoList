@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextPrimary">
+        <item name="android:textColor">@color/darkGray</item>
+        <item name="android:textSize">@dimen/primary_text_size</item>
+    </style>
+
+    <style name="TextPrimary.InProgress">
+        <item name="android:textColor">@color/blue_700</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/in_progress</item>
+    </style>
+
+    <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MyApplication.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>
