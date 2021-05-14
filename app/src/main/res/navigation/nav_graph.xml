@@ -9,5 +9,14 @@
         android:id="@+id/mainScreenFragment"
         android:name="com.example.todolist.ui.MainScreenFragment"
         android:label="fragment_main_screen"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main_screen" >
+        <action
+            android:id="@+id/action_mainScreenFragment_to_contentEditFragment"
+            app:destination="@id/contentEditFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contentEditFragment"
+        android:name="com.example.todolist.ui.ContentEditFragment"
+        android:label="fragment_content_edit"
+        tools:layout="@layout/fragment_content_edit" />
 </navigation>
