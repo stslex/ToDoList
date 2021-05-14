@@ -10,7 +10,8 @@
         android:id="@+id/main_fragment_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/app_margin"/>
+        android:layout_marginTop="@dimen/app_margin"
+        tools:listitem="@layout/main_screen_item"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_screen_button_add"

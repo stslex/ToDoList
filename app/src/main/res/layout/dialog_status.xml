@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/app_margin">
+
+    <TextView
+        android:id="@+id/dialog_status_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/TextPrimary.Large"
+        android:text="@string/change_status_of_your_todo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="@dimen/app_margin"/>
+
+    <RadioGroup
+        android:id="@+id/dialog_status_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_status_label"
+        android:layout_marginTop="@dimen/app_margin"
+        android:layout_marginStart="@dimen/app_margin">
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/dialog_status_radio_button_law"
+            style="@style/TextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_in_progress"
+            android:padding="@dimen/app_margin"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/dialog_status_Radio_button_normal"
+            style="@style/TextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_done"
+            app:layout_constraintStart_toStartOf="@+id/dialog_priority_check_box_law"
+            app:layout_constraintTop_toBottomOf="@id/dialog_priority_check_box_law"
+            android:padding="@dimen/app_margin"/>
+
+        <com.google.android.material.radiobutton.MaterialRadioButton
+            android:id="@+id/dialog_status_radio_button_high"
+            style="@style/TextPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_late"
+            app:layout_constraintStart_toStartOf="@+id/dialog_priority_check_box_normal"
+            app:layout_constraintTop_toBottomOf="@id/dialog_priority_check_box_normal"
+            android:padding="@dimen/app_margin"/>
+    </RadioGroup>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialog_status_button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dialog_status_radio_group"
+        android:layout_marginTop="@dimen/app_margin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

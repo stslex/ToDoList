@@ -5,10 +5,18 @@
         <item name="android:textSize">@dimen/primary_text_size</item>
     </style>
 
-    <style name="TextPrimary.InProgress">
+    <style name="TextPrimary.Active">
         <item name="android:textColor">@color/blue_700</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:text">@string/in_progress</item>
+        <item name="android:text">@string/status_in_progress</item>
+    </style>
+
+    <style name="TextPrimary.Small">
+        <item name="android:textSize">@dimen/small_text_size</item>
+    </style>
+
+    <style name="TextPrimary.Large">
+        <item name="android:textSize">@dimen/large_text_size</item>
     </style>
 
     <style name="Theme.MyApplication.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

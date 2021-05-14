@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/mainScreenFragment"
         android:name="com.example.todolist.ui.MainScreenFragment"
-        android:label="fragment_main_screen"
+        android:label="ToDo List"
         tools:layout="@layout/fragment_main_screen" >
         <action
             android:id="@+id/action_mainScreenFragment_to_contentEditFragment"
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/contentEditFragment"
         android:name="com.example.todolist.ui.ContentEditFragment"
-        android:label="fragment_content_edit"
+        android:label="To Do"
         tools:layout="@layout/fragment_content_edit" />
 </navigation>

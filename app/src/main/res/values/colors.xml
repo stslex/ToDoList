@@ -12,4 +12,7 @@
     <color name="darkGray">#535353</color>
     <color name="blue_700">#0288D1</color>
     <color name="invisible">#00FFFFFF</color>
+
+    <color name="colorPrimary">#4888AA</color>
+    <color name="colorPrimaryDark">#CB3E78CD</color>
 </resources>
