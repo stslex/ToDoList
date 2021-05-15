@@ -9,10 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="gray">#EDEDED</color>
+    <color name="selectedGray">#F1F1F1</color>
     <color name="darkGray">#535353</color>
     <color name="blue_700">#0288D1</color>
     <color name="invisible">#00FFFFFF</color>
 
     <color name="colorPrimary">#4888AA</color>
     <color name="colorPrimaryDark">#CB3E78CD</color>
+
+    <color name="colorPrimaryLight">#59A3CA</color>
 </resources>
