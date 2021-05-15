@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/contentEditFragment"
-        android:name="com.example.todolist.ui.ContentEditFragment"
+        android:name="com.example.todolist.ui.editScreen.ContentEditFragment"
         android:label="To Do"
         tools:layout="@layout/fragment_content_edit" />
 </navigation>

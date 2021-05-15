@@ -40,7 +40,6 @@ android {
 dependencies {
     //Material
     implementation "com.google.android.material:material:$rootProject.materialVersion"
-
     // Room components
     implementation "androidx.room:room-ktx:$rootProject.roomVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

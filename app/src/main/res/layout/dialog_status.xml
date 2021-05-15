@@ -39,8 +39,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/status_done"
-            app:layout_constraintStart_toStartOf="@+id/dialog_priority_check_box_law"
-            app:layout_constraintTop_toBottomOf="@id/dialog_priority_check_box_law"
             android:padding="@dimen/app_margin"/>
 
         <com.google.android.material.radiobutton.MaterialRadioButton
@@ -49,8 +47,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/status_late"
-            app:layout_constraintStart_toStartOf="@+id/dialog_priority_check_box_normal"
-            app:layout_constraintTop_toBottomOf="@id/dialog_priority_check_box_normal"
             android:padding="@dimen/app_margin"/>
     </RadioGroup>
 

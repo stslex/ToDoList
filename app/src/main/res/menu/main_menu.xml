@@ -7,4 +7,10 @@
         android:title="Search"
         app:showAsAction="ifRoom|withText"
         app:actionViewClass="android.widget.SearchView"/>
+    <item
+        android:id="@+id/menu_filter"
+        android:icon="@drawable/ic_baseline_filter_alt_24"
+        android:title="filter"
+        app:showAsAction = "ifRoom"
+        android:menuCategory="container"/>
 </menu>

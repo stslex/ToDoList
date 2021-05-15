@@ -9,8 +9,8 @@ data class Todo(
     @PrimaryKey(autoGenerate = true) var id: Int = 0,
     @ColumnInfo(name = "title") val title: String,
     @ColumnInfo(name = "content") val content: String,
-    @ColumnInfo(name = "status") val status: String,
-    @ColumnInfo(name = "priority") val priority: String,
+    @ColumnInfo(name = "status") var status: String,
+    @ColumnInfo(name = "priority") var priority: String,
     @ColumnInfo(name = "date") val date: String,
     @ColumnInfo(name = "time") val time: String
 )

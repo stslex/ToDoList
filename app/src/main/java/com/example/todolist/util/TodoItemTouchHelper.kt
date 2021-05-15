@@ -25,7 +25,10 @@ class TodoItemTouchHelper(val mAdapter: ItemTouchHelperAdapter) : ItemTouchHelpe
                 ContextCompat.getColor(viewHolder.itemView.context, R.color.selectedGray)
             )
             if (viewHolder != null) {
-                viewHolder?.itemView?.background = ContextCompat.getDrawable(viewHolder.itemView.context,R.drawable.dr_item_recycler)
+                viewHolder?.itemView?.background = ContextCompat.getDrawable(
+                    viewHolder.itemView.context,
+                    R.drawable.dr_item_recycler
+                )
             }
         }
     }

@@ -4,19 +4,26 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title">Title</string>
     <string name="editText">Input your todo</string>
+    <string name="button_save">Save</string>
 
     <!--Status-->
+    <string name="change_status_of_your_todo">Change status of your ToDo</string>
     <string name="status_in_progress">In Progress</string>
     <string name="status_done">Done</string>
     <string name="status_late">Late</string>
 
     <!--Priority-->
+    <string name="string_dialog_priority_label">Choose priority for this ToDo</string>
     <string name="priority_law">Law</string>
     <string name="priority_normal">Normal</string>
     <string name="priority_high">High</string>
 
-    <string name="string_dialog_priority_label">Choose priority for this ToDo</string>
-    <string name="button_save">Save</string>
-    <string name="change_status_of_your_todo">Change status of your ToDo</string>
+    <!--Filter-->
+    <string name="string_dialog_filter_label">Choose where you need to search</string>
+    <string name="filter_title">Title</string>
+    <string name="filter_content">Content</string>
+    <string name="filter_status">Status</string>
+    <string name="filter_priority">Priority</string>
+
 
 </resources>

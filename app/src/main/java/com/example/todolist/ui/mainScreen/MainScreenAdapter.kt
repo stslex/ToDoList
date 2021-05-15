@@ -18,6 +18,8 @@ import com.example.todolist.util.APP_ACTIVITY
 import com.example.todolist.util.DiffUtilCallback
 import com.example.todolist.util.ItemTouchHelperAdapter
 import com.google.android.material.button.MaterialButton
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainScreenAdapter(private val todoViewModel: TodoViewModel) :
@@ -26,6 +28,11 @@ class MainScreenAdapter(private val todoViewModel: TodoViewModel) :
     private var todoList = mutableListOf<Todo>()
     private var listCopy = mutableListOf<Todo>()
     private lateinit var mItemTouchHelper: ItemTouchHelper
+    private var flagStatusChange = false
+    private val done = APP_ACTIVITY.getString(R.string.status_done)
+    private val late = APP_ACTIVITY.getString(R.string.status_late)
+    private val inProgress = APP_ACTIVITY.getString(R.string.status_in_progress)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val binding = MainScreenItemBinding.inflate(
@@ -60,6 +67,50 @@ class MainScreenAdapter(private val todoViewModel: TodoViewModel) :
         mDiffResult.dispatchUpdatesTo(this)
         todoList = todoListInput
         listCopy = todoList
+        todoList.forEach {
+            var status = ""
+            if (it.status == inProgress) {
+                status = checkDate(it.date)
+                if (status == "") {
+                    status = checkTime(it.time)
+                }
+            }
+            if (status != "") {
+                flagStatusChange = true
+                it.status = status
+            }
+        }
+        if (flagStatusChange) {
+            todoViewModel.updateAll(todoList)
+            listCopy = todoList
+        }
+
+    }
+
+    private fun checkDate(datePrimary: String): String {
+        val format = "dd.MM.yyyy"
+        val sdf = SimpleDateFormat(format, Locale.US)
+        val currentDatePrimary = sdf.format(Date())
+        val currentDate = currentDatePrimary.replace(".", "")
+        val date = datePrimary.replace(".", "")
+        var status = ""
+        if (date.toInt() < currentDate.toInt()) {
+            status = APP_ACTIVITY.getString(R.string.status_late)
+        }
+        return status
+    }
+
+    private fun checkTime(timePrimary: String): String {
+        val format = "kk.mm"
+        val sdf = SimpleDateFormat(format, Locale.US)
+        val currentDatePrimary = sdf.format(Date().time)
+        val currentDate = currentDatePrimary.replace(".", "")
+        var date = timePrimary.replace(".", "")
+        var status = ""
+        if (date.toInt() < currentDate.toInt()) {
+            status = APP_ACTIVITY.getString(R.string.status_late)
+        }
+        return status
     }
 
     private fun showDialogStatus(position: Int) {
@@ -74,13 +125,16 @@ class MainScreenAdapter(private val todoViewModel: TodoViewModel) :
         dialog.show()
         when (status) {
             APP_ACTIVITY.getString(R.string.status_in_progress) -> {
-                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_in_progress).isChecked = true
+                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_in_progress).isChecked =
+                    true
             }
             APP_ACTIVITY.getString(R.string.status_done) -> {
-                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_done).isChecked = true
+                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_done).isChecked =
+                    true
             }
             APP_ACTIVITY.getString(R.string.status_late) -> {
-                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_late).isChecked = true
+                dialog.findViewById<RadioButton>(R.id.dialog_status_radio_button_late).isChecked =
+                    true
             }
 
         }
